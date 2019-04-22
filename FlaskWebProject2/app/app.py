@@ -23,42 +23,28 @@ def index():
     """Renders a sample page."""
     return render_template('index.html')
 
+list_result = []
 
-
-@app.route('/new', methods=['GET', 'POST'])
+@app.route('/new', methods=['GET','POST'])
 def new_task():
-    #result = add.apply_async(arg = [10, 20])
     try:
-
-        result = add.delay(4,4)
+       result = add.apply_async(args = [10, 20])
+       list_result.append(result)
+       print(list_result)
+       url_for('result_task', id_result = id_result)
     except Exception as e:
-        print(str(e))
-    try:
-        print(result.ready())
-    except:
-        print('error: ready')
-    try:
-        print(result.wait())
-    except:
-        print('error: wait')
-
-    print('=================================')
-    try:
-        print(result.get())
-    except:
-        print('error: get')
-    
-    return 'Welcome to my app!'
+       print(str(e))
+            
+    return result.id
 
 @app.route('/result/<id_result>')
-def send_image(id_result):
-    return id_result.ready()
+def result_task(id_result):
+    try:
+        obj = list_result[0]
+        result = obj.status
+    except Exception as e:
+        result = str(e)
+    return str(result)
 
 if __name__ == '__main__':
-    import os
-    HOST = os.environ.get('SERVER_HOST', 'localhost')
-    try:
-        PORT = int(os.environ.get('SERVER_PORT', '6379'))
-    except ValueError:
-        PORT = 6379
     app.run()
