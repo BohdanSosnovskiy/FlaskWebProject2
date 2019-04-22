@@ -1,27 +1,13 @@
 from flask import Flask, render_template, request
-from celery import Celery
-import traceback
+from tasks import add
 
 app = Flask(__name__)
 
-
-celery = Celery('tasks', broker="amqp://guest@localhost//", backend="amqp://guest@localhost//",ignore_result=False)
-celery.conf.update(app.config)
-
-# Make the WSGI interface available at the top level so wfastcgi can get it.
 wsgi_app = app.wsgi_app
 
-
-@celery.task
-def add(x, y):
-    result = x + y
-    return result
-
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    """Renders a sample page."""
-    return render_template('index.html')
+    return 'Welcome to project'
 
 list_result = []
 
@@ -30,7 +16,6 @@ def new_task():
     try:
        result = add.apply_async(args = [10, 20])
        list_result.append(result)
-       print(list_result)
        url_for('result_task', id_result = id_result)
     except Exception as e:
        print(str(e))
@@ -39,12 +24,7 @@ def new_task():
 
 @app.route('/result/<id_result>')
 def result_task(id_result):
-    try:
-        obj = list_result[0]
-        result = obj.status
-    except Exception as e:
-        result = str(e)
-    return str(result)
+    return str(list_result[0].status)
 
 if __name__ == '__main__':
     app.run()
