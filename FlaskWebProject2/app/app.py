@@ -5,7 +5,7 @@ import traceback
 app = Flask(__name__)
 
 
-celery = Celery('tasks', broker="amqp://guest@localhost//", backend="amqp://")
+celery = Celery('tasks', broker="amqp://guest@localhost//", backend="amqp://guest@localhost//",ignore_result=False)
 celery.conf.update(app.config)
 
 # Make the WSGI interface available at the top level so wfastcgi can get it.
