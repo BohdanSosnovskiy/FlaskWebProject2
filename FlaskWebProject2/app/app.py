@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask
 from tasks import add
 
 app = Flask(__name__)
@@ -11,15 +11,10 @@ def index():
 
 list_result = []
 
-@app.route('/new', methods=['GET','POST'])
+@app.route('/new', methods=['GET', 'POST'])
 def new_task():
-    try:
-       result = add.apply_async(args = [10, 20])
-       list_result.append(result)
-       url_for('result_task', id_result = id_result)
-    except Exception as e:
-       print(str(e))
-            
+    result = add.apply_async(args=[10, 20])
+    list_result.append(result)
     return result.id
 
 @app.route('/result/<id_result>')
