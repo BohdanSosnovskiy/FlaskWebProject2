@@ -32,7 +32,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="requirements.txt" />
+    <Content Include="requirements.txt">
+      <Publish>True</Publish>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
