@@ -32,12 +32,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="template\index.html" />
     <Content Include="requirements.txt">
       <Publish>True</Publish>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="template\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
