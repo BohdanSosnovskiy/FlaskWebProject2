@@ -33,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\templates\index.html" />
+    <Content Include="app\templates\home_page.html" />
     <Content Include="requirements.txt">
       <Publish>True</Publish>
     </Content>

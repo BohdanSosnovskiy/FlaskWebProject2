@@ -6,5 +6,4 @@ celery = Celery('tasks',
 
 @celery.task
 def add(x, y):
-    result = x + y
-    return result
+    return x + y

@@ -7,17 +7,13 @@ wsgi_app = app.wsgi_app
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-list_result = []
+    return render_template('home_page.html')
 
 @app.route('/new', methods=['GET', 'POST'])
 def new_task():
     if request.method == 'POST':
         result = add.apply_async(args=[request.form['Text1'], request.form['Text2']])
-        list_result.append(result)
-        
-        return render_template('index.html',id_task=result.id)
+        return render_template('index.html', id_task=result.id)
     else:
         return render_template('index.html')
 
