@@ -15,6 +15,9 @@
             height: 97px;
             width: 345px;
         }
+        #id_task {
+            width: 227px;
+        }
     </style>
 </head>
 <body>
@@ -23,12 +26,18 @@
         Welcome to page tasks</p>
     <p style="text-align: left">
         Input values &#39;x&#39; and &#39;y&#39;</p>
-    <form action="" method="post">
-        <input id="Text1" type="text" />
-        <input id="Text2" type="text" />
+    <form method="post" name="newTask">
+        <input id="Text1" name="Text1" type="text" />
+        <input id="Text2" name="Text2" type="text" />
         <input id="Add_task" type="submit" value="Add task" />
-        <p>List all task id</p>
-        <p><textarea id="TextArea1" name="S1"></textarea></p>
-     </form>    
+        <p>task id {{id_task}}</p>
+    </form> 
+    <form action="/result">
+        <p><input id="result_id" name="result_id" type="text"> 
+       
+            <input id="Submit1" type="submit" value="View result" />
+        </p>
+    </form>
+        
 </body>
 </html>
