@@ -9,7 +9,7 @@
             background-color:dodgerblue;
         }
         p{
-            color:aliceblue;
+            color:midnightblue;
             font-size:14pt;
         }
         #Text1 {
@@ -25,26 +25,43 @@
         #id_task {
             width: 227px;
         }
+        .borderElement{
+            background-color: aliceblue;
+            border: 2px solid #183f7f;
+            border-radius: 50px;
+        }
+
+        .div_window{
+            background-color: Highlight;
+            border: 2px solid #183f7f;
+            border-radius: 50px;
+            width: 25%;
+            align-content:center;
+            text-align:center;
+        }
     </style>
 </head>
 <body>
-    
-    <h1><p style="text-align: center">
-        Welcome to page tasks</p></h1>
-    <p style="text-align: left">
-        Input values &#39;x&#39; and &#39;y&#39;</p>
-    <form method="post" name="newTask">
-        <input id="Text1" name="Text1" type="text" />
-        <input id="Text2" name="Text2" type="text" />
-        <input id="Add_task" type="submit" value="Add task" />
-        <p>task id {{id_task}}</p>
-    </form> 
-    <form action="/result">
-        <p><input id="result_id" name="result_id" type="text"/> 
+    <center>
+        <div class="div_window">
+            <p style="text-align: center">
+                Welcome to page tasks</p>
+            <p>
+                Input values &#39;x&#39; and &#39;y&#39;</p>
+            <form method="post" name="newTask">
+                <input class="borderElement" id="Text1" name="Text1" type="text" />
+                <input class="borderElement" id="Text2" name="Text2" type="text" />
+                <input class="borderElement" id="Add_task" type="submit" value="Add task" />
+                <p>task id </p>
+                <p style="color:midnightblue">{{id_task}}</p>
+            </form> 
+            <form action="/result">
+                <p><input class="borderElement" id="result_id" name="result_id" type="text"/> 
        
-            <input id="Submit1" type="submit" value="View result" />
-        </p>
-    </form>
-        
+                    <input class="borderElement" id="Submit1" type="submit" value="View result" />
+                </p>
+            </form>
+         </div> 
+     </center>
 </body>
 </html>
