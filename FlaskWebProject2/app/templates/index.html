@@ -5,6 +5,13 @@
     <meta charset="utf-8" />
     <title></title>
     <style type="text/css">
+        body{
+            background-color:dodgerblue;
+        }
+        p{
+            color:aliceblue;
+            font-size:14pt;
+        }
         #Text1 {
             width: 70px;
         }
@@ -22,8 +29,8 @@
 </head>
 <body>
     
-    <p style="text-align: center">
-        Welcome to page tasks</p>
+    <h1><p style="text-align: center">
+        Welcome to page tasks</p></h1>
     <p style="text-align: left">
         Input values &#39;x&#39; and &#39;y&#39;</p>
     <form method="post" name="newTask">
@@ -33,7 +40,7 @@
         <p>task id {{id_task}}</p>
     </form> 
     <form action="/result">
-        <p><input id="result_id" name="result_id" type="text"> 
+        <p><input id="result_id" name="result_id" type="text"/> 
        
             <input id="Submit1" type="submit" value="View result" />
         </p>

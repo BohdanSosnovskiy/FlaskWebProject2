@@ -5,5 +5,5 @@ celery = Celery('tasks',
                 backend="amqp://guest@localhost//", ignore_result=False)
 
 @celery.task
-def add(x, y):
-    return x + y
+def add(num1, num2):
+    return num1 + num2
